@@ -1,0 +1,24 @@
+# Virtual Environment
+engagement_env/
+env/
+venv/
+*.venv
+
+# Python cache & temporary files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Local Database & Logs
+data/*.db
+data/calibration/*.json
+
+# Large AI Model files (teammates will download locally)
+models/*.onnx
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
