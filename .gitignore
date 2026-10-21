@@ -3,6 +3,9 @@ engagement_env/
 env/
 venv/
 *.venv
+.venv/
+.venv*/
+.venv311/
 
 # Python cache & temporary files
 __pycache__/
@@ -12,6 +15,7 @@ __pycache__/
 
 # Local Database & Logs
 data/*.db
+data/*.jpg
 data/calibration/*.json
 
 # Large AI Model files (teammates will download locally)
