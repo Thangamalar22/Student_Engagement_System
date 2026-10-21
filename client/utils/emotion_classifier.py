@@ -6,22 +6,27 @@
 import cv2
 import numpy as np
 import os
+import sys
 
-FER_CLASSES = [
-    "neutral", "happiness", "surprise", "sadness",
-    "anger", "disgust", "fear", "contempt"
-]
-
-ENGAGEMENT_MAPPING = {
-    "neutral":   ("Engaged",     1.0),
-    "happiness": ("Engaged",     1.0),
-    "surprise":  ("Confused",    0.6),
-    "fear":      ("Confused",    0.4),
-    "sadness":   ("Bored",       0.3),
-    "disgust":   ("Distracted",  0.2),
-    "anger":     ("Frustrated",  0.2),
-    "contempt":  ("Frustrated",  0.2),
-}
+sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
+try:
+    from core.config import FER_CLASSES, FER_ENGAGEMENT_MAPPING
+    ENGAGEMENT_MAPPING = FER_ENGAGEMENT_MAPPING
+except ImportError:
+    FER_CLASSES = [
+        "neutral", "happiness", "surprise", "sadness",
+        "anger", "disgust", "fear", "contempt"
+    ]
+    ENGAGEMENT_MAPPING = {
+        "neutral":   ("Engaged",     0.65),
+        "happiness": ("Engaged",     0.80),
+        "surprise":  ("Intrigued",   0.70),
+        "fear":      ("Confused",    0.40),
+        "sadness":   ("Bored",       0.35),
+        "disgust":   ("Distracted",  0.25),
+        "anger":     ("Frustrated",  0.30),
+        "contempt":  ("Distracted",  0.25),
+    }
 
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "..", "..", "models", "emotion_ferplus.onnx")
 
